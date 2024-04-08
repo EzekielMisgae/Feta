@@ -1,0 +1,5 @@
+MONGO_ATLAS_URI = mongodb+srv://admin:admin@atlascluster.eminnlo.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster
+PUBLIC_ENCRYPTION_KEY = 1JyNLkL78uupryMqmDGBevwe
+NODE_MAILER_USER = martaanteneh21@gmail.com
+NODE_MAILER_PASS = elge renq atwr tntl
+JWT_SECRET = 7c79f3b76e78e9fdcd56cfea02121a5ac129d1e5d72e24a3937cdb8875004ea4
