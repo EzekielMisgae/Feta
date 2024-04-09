@@ -1,5 +1,4 @@
 import AdminNavBar from "@/components/AdminNavBar";
-import dummyUsers from "@/utils/dummyUsers";
 import { useState, useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useRouter } from "next/router";
@@ -62,7 +61,7 @@ const Registration = () => {
         const checkedUsers = users
             .filter((user) => user.checked)
             .map((user) => user.id);
-        console.log(checkedUsers);
+        // console.log(checkedUsers);
 
         try {
             const response = await fetch(

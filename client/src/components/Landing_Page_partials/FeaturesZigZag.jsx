@@ -122,7 +122,7 @@ function FeaturesZigzag({ images }) {
                                             <FaCheck
                                                 className="w-3 h-3 text-green-500 mr-2"
                                             />
-                                            <span>Make online payment through cards</span>
+                                            <span>Make online payment through CHAPA</span>
                                         </li>
                                         <li className="flex items-center">
                                             <FaCheck

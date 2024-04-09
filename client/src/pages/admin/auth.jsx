@@ -62,7 +62,7 @@ export default function signin({ adminIdCookie }) {
         const data = await response.json();
         if (response.status === 200) {
             setMessage({ errorMsg: "", successMsg: data.msg });
-            console.log(data);
+            // console.log(data);
             setStep(2); // Move to next step on the same page
 
             setAdminToken(data.admin_token); // set cookie when signed up

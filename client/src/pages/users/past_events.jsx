@@ -56,7 +56,7 @@ function UserDashboard() {
     const handleFilterApply = () => {
         // Perform the search/filter operation based on the filter options
         // ...
-        console.log(filterOptions);
+        // console.log(filterOptions);
         setPopupFilterOpen(false); // Close the popup filter
     };
 

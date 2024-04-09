@@ -16,7 +16,7 @@ const Images = [
     },
     {
         id: 3,
-        src: "/img/landing_page_images/test.jpg",
+        src: "/img/landing_page_images/men.jpeg",
         title: "Surafel Desalegn",
         role: "FullStack Dev",
         linkedinUrl: "https://www.linkedin.com/in//",
@@ -25,7 +25,7 @@ const Images = [
     },
     {
         id: 4,
-        src: "/img/landing_page_images/test.jpg",
+        src: "/img/landing_page_images/woman.jpeg",
         title: "Fiker Biset",
         role: "FullStack Dev",
         linkedinUrl: "https://www.linkedin.com/in//",
@@ -34,7 +34,7 @@ const Images = [
     },
     {
         id: 5,
-        src: "/img/landing_page_images/test.jpg",
+        src: "/img/landing_page_images/woman.jpeg",
         title: "Martha Anteneh",
         role: "FullStack Dev",
         linkedinUrl: "https://www.linkedin.com/in//",

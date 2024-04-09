@@ -22,11 +22,9 @@ function Form() {
                 }),
             }
         );
-
-        const data = await response.json();
         if (response.status === 200) {
-            console.log(data);
             setMessage("* Status:  New admin credentials added!");
+            console.log("New admin credentials added!");
         } else {
             console.error(`Failed with status code ${response.status}`);
         }

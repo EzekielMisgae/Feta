@@ -66,7 +66,7 @@ export default function signup({ userIdCookie }) {
         const data = await response.json();
         if (response.status === 200) {
             setMessage({ errorMsg: "", successMsg: data.msg });
-            console.log(data);
+            // console.log(data);
             setStep(2); // Move to next step on the same page
         } else {
             console.error(`Failed with status code ${response.status}`);
@@ -107,7 +107,7 @@ export default function signup({ userIdCookie }) {
         const data = await response.json();
         if (response.status === 200) {
             setMessage({ errorMsg: "", successMsg: data.msg });
-            console.log(data);
+            // console.log(data);
             setStep(3); // Move to next step on the same page
 
             setUserToken(data.user_id); // set cookie when signed up

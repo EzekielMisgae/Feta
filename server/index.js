@@ -16,7 +16,7 @@ const eventRouter = require("./routes/eventRoutes");
 // const checkInRouter = require("./routes/checkInRoutes")
 
 dotenv.config();
-console.log("in index - ", process.env.MONGO_ATLAS_URI);
+// console.log("in index - ", process.env.MONGO_ATLAS_URI);
 //database url
 mongoose
     .connect(process.env.MONGO_ATLAS_URI, {
