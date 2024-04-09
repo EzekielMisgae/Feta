@@ -30,10 +30,10 @@ Our event management system is built on a microservice architecture. This allows
 <h1>🚀 Getting Started (Locally)</h1>
 
 <h3>Download or clone the repository</h3>
-<p>You can download the zip file of the repository or use the following command in your terminal to clone the repository:</p>
-<pre><code class="language-bash">git clone https://github.com/d17012002/event-management</code></pre>
+<p>You can download the zip file of the repository</p>
+
 <h3>Navigate to the project's root directory</h3>
-<p>Once you have downloaded or cloned the repository, navigate to the project's root directory. The project consists of three folders: client, server, and developer.</p>
+<p>Once you have downloaded the repository, navigate to the project's root directory. The project consists of three folders: client, server, and developer.</p>
 <h3>Install dependencies</h3>
 <p>Before starting the servers, make sure to install the dependencies by running the command:</p>
 <pre><code class="language-bash">npm install</code></pre>
@@ -41,17 +41,9 @@ Our event management system is built on a microservice architecture. This allows
 <h3>Set up environment variables</h3>
 <p>Before running the servers, you need to set up the following environment variables:</p>
 <h4>For the client-side:</h4>
-<p>Create a <b>.env.local</b> file in the client folder with the following variables:</p>
-<pre><code class="language-php">NEXT_PUBLIC_BASE_URL - the base URL of the API server (e.g. http://localhost:3000)
-NEXT_PUBLIC_STRIPE_KEY - the public key for your Stripe account
-NEXT_PUBLIC_API_URL - the URL of the API server (e.g. http://localhost:5000)</code></pre>
+<p>Rename a <b>.envv.local</b> file to <b>.env.local</b> in the client folder</p>
 <h4>For the server-side:</h4>
-<p>Create a <b>.env</b> file in the server folder with the following variables:</p>
-<pre><code class="language-rust">MONGO_ATLAS_URI - the connection string for your MongoDB Atlas database
-STRIPE_KEY - the secret key for your Stripe account
-NODE_MAILER_USER - the email address to use for sending email notifications
-NODE_MAILER_PASS - the password for the email address to use for sending email notifications
-JWT_SECRET - the secret key to use for JWT token generation</code></pre>
+<p>Rename a <b>copy.envv</b> file to <b>.env</b> in the client folder</p>
 <h3>Start the servers</h3>
 <p>To start the servers, run the following commands:</p>
 <p>For the client-side:</p>
