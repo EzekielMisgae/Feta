@@ -197,6 +197,7 @@ const CreateEvent = () => {
                                 className="adminDropDownInput"
                                 value={formData.profile}
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                         <div>
@@ -213,6 +214,7 @@ const CreateEvent = () => {
                                 className="adminDropDownInput"
                                 value={formData.cover}
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                     </div>
