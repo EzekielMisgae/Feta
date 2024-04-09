@@ -180,7 +180,7 @@ const checkin = async (req, res) => {
     Event.find({ event_id: eventId })
         .then((data) => {
             eventName = data[0].name;
-            console.log(eventName);
+            // console.log(eventName);
         })
         .catch((err) => {
             res.status(400).send({ msg: "Error fetching event", error: err });
