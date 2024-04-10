@@ -141,7 +141,7 @@ function EventPage() {
                                         className={`px-6 py-2 ${
                                             isUserRegistered
                                                 ? "bg-gray-700 hover:bg-gray-800"
-                                                : "bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)]"
+                                                : "bg-blue-500 hover:bg-blue-200"
                                         } text-white rounded focus:outline-none`}
                                         disabled={isUserRegistered}
                                     >
@@ -230,7 +230,7 @@ function EventPage() {
                                                     className={`px-3 py-2 ${
                                                         isUserRegistered
                                                             ? "bg-gray-700 hover:bg-gray-800"
-                                                            : "bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)]"
+                                                            : "bg-blue-500 hover:bg-blue-200"
                                                     } text-white rounded focus:outline-none`}
                                                     disabled={isUserRegistered}
                                                 >
@@ -241,7 +241,7 @@ function EventPage() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <p className="text-sm text-[color:var(--darker-secondary-color)] mt-6">
+                                    <p className="text-sm text-blue-500 mt-6">
                                         *Caution: All ticket sales are final and
                                         non-refundable.
                                     </p>

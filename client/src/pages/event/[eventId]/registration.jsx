@@ -100,7 +100,7 @@ const Registration = () => {
                             className={`px-4 py-2 rounded ${
                                 showChecklist
                                     ? "bg-gray-300 text-gray-800"
-                                    : "bg-[color:var(--darker-secondary-color)] text-white hover:bg-[color:var(--secondary-color)]"
+                                    : "bg-blue-500 text-white hover:bg-blue-200"
                             }`}
                             onClick={() => setShowChecklist(false)}
                         >
@@ -109,7 +109,7 @@ const Registration = () => {
                         <button
                             className={`px-4 py-2 rounded ${
                                 showChecklist
-                                    ? "bg-[color:var(--darker-secondary-color)] text-white hover:bg-[color:var(--secondary-color)]"
+                                    ? "bg-blue-500 text-white hover:bg-blue-200"
                                     : "bg-gray-300 text-gray-800"
                             }`}
                             onClick={() => setShowChecklist(true)}
@@ -123,7 +123,7 @@ const Registration = () => {
                             placeholder="Search by name"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="px-[3%] py-1 border border-gray-400 rounded-md focus:border-[color:var(--darker-secondary-color)] focus:outline-none focus:ring-1 focus:ring-[color:var(--darker-secondary-color)]"
+                            className="px-[3%] py-1 border border-gray-400 rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         />
                     </div>
                 </div>
@@ -198,14 +198,14 @@ const Registration = () => {
                                                             className="sr-only"
                                                         />
                                                         <div
-                                                            className={`bg-white border border-[color:var(--darker-secondary-color)] rounded-md shadow-sm w-6 h-6 flex items-center justify-center mr-2 ${
+                                                            className={`bg-white border border-blue-500 rounded-md shadow-sm w-6 h-6 flex items-center justify-center mr-2 ${
                                                                 user.checked
-                                                                    ? "ring-1 ring-[color:var(--darker-secondary-color)]"
+                                                                    ? "ring-1 ring-blue-500"
                                                                     : ""
                                                             }`}
                                                         >
                                                             {user.checked && (
-                                                                <FaCheck className="text-[color:var(--secondary-color)]" />
+                                                                <FaCheck className="text-blue-500" />
                                                             )}
                                                         </div>
                                                     </div>
@@ -269,7 +269,7 @@ const Registration = () => {
                     <center>
                         <button
                             onClick={handleSubmit}
-                            className="bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] mt-3 text-white py-3 px-[15%] rounded-md transition duration-300 ease-in-out"
+                            className="bg-blue-500 hover:bg-blue-200 mt-3 text-white py-3 px-[15%] rounded-md transition duration-300 ease-in-out"
                         >
                             Submit list
                         </button>

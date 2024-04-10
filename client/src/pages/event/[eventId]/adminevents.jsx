@@ -169,7 +169,7 @@ function AdminEventPage() {
                                                 `/event/${eventData.event_id}/registration`
                                             )
                                         }
-                                        className="px-6 py-2 bg-[color:var(--darker-secondary-color)] text-white rounded hover:bg-[color:var(--secondary-color)] focus:outline-none"
+                                        className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-200 focus:outline-none"
                                     >
                                         Registrations
                                     </button>
@@ -247,13 +247,13 @@ function AdminEventPage() {
                                         <li className="flex items-center h-16 py-1 rounded-md p-4 mb-2">
                                             <button
                                                 onClick={deleteEvent}
-                                                className="w-full bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] text-white py-1 px-2 rounded-md text-sm transition duration-300 ease-in-out"
+                                                className="w-full bg-blue-500 hover:bg-blue-200 text-white py-1 px-2 rounded-md text-sm transition duration-300 ease-in-out"
                                             >
                                                 Delete this event
                                             </button>
                                         </li>
                                     </ul>
-                                    <p className="text-sm text-[color:var(--darker-secondary-color)] mt-6">
+                                    <p className="text-sm text-blue-500 mt-6">
                                         *Caution: This action will permanently
                                         delete the event and all associated
                                         data. Are you sure you want to proceed?
