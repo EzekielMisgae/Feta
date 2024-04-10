@@ -74,37 +74,25 @@ Our team consists of:
   <a href="https://www.linkedin.com/in/surafeldesalegn/">
   LinkedIn
   </a> and 
-  <a href="https://github.com/">
-  GitHub
-  </a>, or visit his 
-  <a href="https://d17012002.github.io/Protfolio-Sample/">
-  personal website
-  </a>.
-  </li>
+  <a href="https://github.com/seraphde">
+  GitHub.
+  </li> </a>
   <li><strong>Fikr Biset:</strong>
   Connect with Fiker on 
   <a href="https://www.linkedin.com/in/fikerbiset/">
   LinkedIn
   </a> and 
-  <a href="https://github.com/">
-  GitHub
-  </a>, or visit his 
-  <a href="https://.vercel.app/">
-  personal website
-  </a>.
-  </li>
+  <a href="https://github.com/fikerbiset">
+  GitHub.
+  </li></a>
   <li><strong>Martha Anteneh:</strong>
   Connect with Martha on 
   <a href="https://www.linkedin.com/in/martaanteneh/">
   LinkedIn
   </a> and 
-  <a href="https://github.com/">
-  GitHub
-  </a>, or visit his 
-  <a href="https://.vercel.app/">
-  personal website
-  </a>.
-  </li>
+  <a href="https://github.com/martha2112">
+  GitHub.
+  </li></a>
 </ul>
 <br>
 
