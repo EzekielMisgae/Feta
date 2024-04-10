@@ -177,7 +177,7 @@ export default function signin({ adminIdCookie }) {
                                     as an admin for testing purposes by
                                     following this{" "}
                                     <a
-                                        href="https://invite-developers.vercel.app/"
+                                        href=""
                                         target="_blank"
                                         className="text-blue-500"
                                     >
@@ -195,7 +195,7 @@ export default function signin({ adminIdCookie }) {
                                 <button
                                     type="submit"
                                     onClick={() => {
-                                        setEmail("invite.testing@gmail.com");
+                                        setEmail("feta.testing@gmail.com");
                                         setPassword("invite123");
                                     }}
                                     className="btn text-white bg-gray-700 hover:bg-gray-800 mt-4 w-full sm:w-auto sm:ml-4"
