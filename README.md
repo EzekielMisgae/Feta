@@ -75,24 +75,24 @@ Our team consists of:
   LinkedIn
   </a> and 
   <a href="https://github.com/seraphde">
-  GitHub.
-  </li> </a>
+  GitHub</a>.
+  </li>
   <li><strong>Fikr Biset:</strong>
   Connect with Fiker on 
   <a href="https://www.linkedin.com/in/fikerbiset/">
   LinkedIn
   </a> and 
   <a href="https://github.com/fikerbiset">
-  GitHub.
-  </li></a>
+  GitHub</a>.
+  </li>
   <li><strong>Martha Anteneh:</strong>
   Connect with Martha on 
   <a href="https://www.linkedin.com/in/martaanteneh/">
   LinkedIn
   </a> and 
   <a href="https://github.com/martha2112">
-  GitHub.
-  </li></a>
+  GitHub</a>.
+  </li>
 </ul>
 <br>
 
