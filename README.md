@@ -1,5 +1,4 @@
-<h1 align="center"> inVite | Event Management System</h1>
-<h3 align="center">Live at https://invite-onweb.vercel.app/</h3>
+<h1 align="center"> Feta | Event Management System</h1>
 Welcome to our automated event management system, where you can easily organize events, manage registrations, and book tickets, all with just a few clicks. This system provides a hassle-free experience for both event organizers and attendees, making event management a breeze.
 <br>
 
