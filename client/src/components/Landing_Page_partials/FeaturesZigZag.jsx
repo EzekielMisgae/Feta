@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCheck } from "react-icons/fa";
 
-function FeaturesZigzag({ images }) {
+function FeaturesZigzag() {
     return (
         <section>
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -15,7 +15,7 @@ function FeaturesZigzag({ images }) {
                             One product, unlimited solutions
                         </h1>
                         <p className="text-xl text-gray-500">
-                        Our platform provides a range of features, including event creation and the ability to take registrations, all while accommodating multiple admins.
+                            Our platform provides a range of features, including event creation and the ability to take registrations, all while accommodating multiple admins.
                         </p>
                     </div>
 
@@ -23,19 +23,6 @@ function FeaturesZigzag({ images }) {
                     <div className="grid gap-20">
                         {/* 1st item */}
                         <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
-                            {/* Image */}
-                            <div
-                                className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1"
-                                data-aos="fade-up"
-                            >
-                                <img
-                                    className="max-w-full mx-auto md:max-w-none h-auto"
-                                    src={images[0].src}
-                                    width="540"
-                                    height="405"
-                                    alt={images[0].title}
-                                />
-                            </div>
                             {/* Content */}
                             <div
                                 className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
@@ -48,9 +35,6 @@ function FeaturesZigzag({ images }) {
                                     <h3 className="h3 mb-3">
                                         Keep events on schedule
                                     </h3>
-                                    <p className="text-xl text-gray-500 mb-4">
-                                    In order to organize an event, you must log in as an event manager. The platform owner can assign event managers, or you may use test credentials. After logging in, you can begin managing the event.
-                                    </p>
                                     <ul className="text-lg text-gray-500 -mb-2">
                                         <li className="flex items-center mb-2">
                                             <FaCheck
@@ -75,25 +59,15 @@ function FeaturesZigzag({ images }) {
                                             </span>
                                         </li>
                                     </ul>
+                                    <p className="text-xl text-gray-500 mt-4">
+                                        In order to organize an event, you must log in as an event manager. The platform owner can assign event managers, or you may use test credentials. After logging in, you can begin managing the event.
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         {/* 2nd item */}
                         <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
-                            {/* Image */}
-                            <div
-                                className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 rtl"
-                                data-aos="fade-up"
-                            >
-                                <img
-                                    className="max-w-full mx-auto md:max-w-none h-auto"
-                                    src={images[1].src}
-                                    width="540"
-                                    height="405"
-                                    alt={images[1].title}
-                                />
-                            </div>
                             {/* Content */}
                             <div
                                 className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
@@ -106,9 +80,6 @@ function FeaturesZigzag({ images }) {
                                     <h3 className="h3 mb-3">
                                         Book your favourite shows
                                     </h3>
-                                    <p className="text-xl text-gray-500 mb-4">
-                                    On users dashboard, users can view all available events, select their preferred event, and proceed with the booking process.
-                                    </p>
                                     <ul className="text-lg text-gray-500 -mb-2">
                                         <li className="flex items-center mb-2">
                                             <FaCheck
@@ -129,29 +100,19 @@ function FeaturesZigzag({ images }) {
                                                 className="w-3 h-3 text-green-500 mr-2"
                                             />
                                             <span>
-                                            Stay informed about the events you've registered for.
+                                                Stay informed about the events you've registered for.
                                             </span>
                                         </li>
                                     </ul>
+                                    <p className="text-xl text-gray-500 mt-4">
+                                        On users dashboard, users can view all available events, select their preferred event, and proceed with the booking process.
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         {/* 3rd item */}
                         <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
-                            {/* Image */}
-                            <div
-                                className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1"
-                                data-aos="fade-up"
-                            >
-                                <img
-                                    className="max-w-full mx-auto md:max-w-none h-auto"
-                                    src={images[2].src}
-                                    width="540"
-                                    height="405"
-                                    alt={images[2].title}
-                                />
-                            </div>
                             {/* Content */}
                             <div
                                 className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
@@ -162,11 +123,8 @@ function FeaturesZigzag({ images }) {
                                         Less effort. More work
                                     </div>
                                     <h3 className="h3 mb-3">
-                                    Track check-in/check-out
+                                        Track check-in/check-out
                                     </h3>
-                                    <p className="text-xl text-gray-500 mb-4">
-                                    Effortlessly monitor event participants and their details with our platform, and simplify the check-in and check-out process with our convenient features. 
-                                    </p>
                                     <ul className="text-lg text-gray-500 -mb-2">
                                         <li className="flex items-center mb-2">
                                             <FaCheck
@@ -191,6 +149,9 @@ function FeaturesZigzag({ images }) {
                                             </span>
                                         </li>
                                     </ul>
+                                    <p className="text-xl text-gray-500 mt-4">
+                                        Effortlessly monitor event participants and their details with our platform, and simplify the check-in and check-out process with our convenient features.
+                                    </p>
                                 </div>
                             </div>
                         </div>

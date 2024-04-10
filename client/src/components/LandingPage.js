@@ -35,7 +35,7 @@ function LandingPage() {
 
                 <main className="grow">
                     <HeroHome />
-                    <FeaturesZigZag images={[feature1, feature2, feature3]} />
+                    <FeaturesZigZag/>
                     <Developers images={[dev1, dev2, dev3, pm1]} />
                 </main>
             </div>
