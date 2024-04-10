@@ -63,7 +63,7 @@ export default function NavBar() {
                         />
                         <h1 className="m-2 text-black font-bold text-4xl">
                             {"<In"}
-                            <span className="bg-blue-500">
+                            <span className="text-blue-500">
                                 Vit
                             </span>
                             {"e />"}

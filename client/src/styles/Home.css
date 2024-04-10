@@ -1,24 +1,24 @@
 
 /* filter slider */
 .rc-slider-rail{
-    background-color: rgb(0 0 0 / 0.1) !important;
+    background-color: rgb(59, 130, 246) !important;
 }
 
 .rc-slider-track{
-    background-color: var(--darker-secondary-color) !important
+    background-color: rgb(59, 130, 246) !important
 }
 
 .rc-slider-handle{
-    border-color: var(--darker-secondary-color) !important
+    border-color: rgb(59, 130, 246) !important
 }
 
 .rc-slider-handle:hover{
-    border-color: var(--darker-secondary-color) !important
+    border-color: rgb(59, 130, 246) !important
 }
 
 .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging{
-    border-color: var(--darker-secondary-color) !important;
-    box-shadow: 0 0 0 5px var(--darker-secondary-color) !important
+    border-color: rgb(59, 130, 246) !important;
+    box-shadow: 0 0 0 5px rgb(59, 130, 246) !important
 }
 
 /* Landing Page Styles */
