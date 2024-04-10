@@ -11,7 +11,7 @@ function TeamSection({images: developers}) {
                 <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
                     <h2 className="h2 mb-4">
                         Our{" "}
-                        <span className="text-[color:var(--secondary-color)]">
+                        <span className="text-blue-500">
                             Team
                         </span>{" "}
                     </h2>
@@ -43,7 +43,7 @@ function TeamSection({images: developers}) {
                                         {developer?.githubUrl && (
                                             <a
                                                 href={developer?.githubUrl}
-                                                className="text-gray-500 hover:text-[color:var(--darker-secondary-color)] transition-all ease-in-out"
+                                                className="text-gray-500 hover:text-blue-500 transition-all ease-in-out"
                                                 target="_blank"
                                             >
                                                 <span className="sr-only">
@@ -55,7 +55,7 @@ function TeamSection({images: developers}) {
                                         {developer?.linkedinUrl && (
                                             <a
                                                 href={developer?.linkedinUrl}
-                                                className="text-gray-500 hover:text-[color:var(--darker-secondary-color)] transition-all ease-in-out"
+                                                className="text-gray-500 hover:text-blue-500 transition-all ease-in-out"
                                                 target="_blank"
                                             >
                                                 <span className="sr-only">
@@ -67,7 +67,7 @@ function TeamSection({images: developers}) {
                                         {developer?.websiteUrl && (
                                             <a
                                                 href={developer?.websiteUrl}
-                                                className="text-gray-500 hover:text-[color:var(--darker-secondary-color)] transition-all ease-in-out"
+                                                className="text-gray-500 hover:text-blue-500 transition-all ease-in-out"
                                                 target="_blank"
                                             >
                                                 <span className="sr-only">

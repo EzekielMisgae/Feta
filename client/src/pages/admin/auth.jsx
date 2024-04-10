@@ -98,8 +98,8 @@ export default function signin({ adminIdCookie }) {
                         <div
                             className={`h-full border-2 rounded-l-lg px-5 py-2 ${
                                 step >= 1
-                                    ? `text-white bg-[color:var(--darker-secondary-color)] border-r-white border-[color:var(--darker-secondary-color)]`
-                                    : `border-[color:var(--darker-secondary-color)] border-dashed`
+                                    ? `text-white bg-blue-500 border-r-white border-blue-500`
+                                    : `border-blue-500 border-dashed`
                             }`}
                         >
                             <div>01</div>
@@ -116,8 +116,8 @@ export default function signin({ adminIdCookie }) {
                         <div
                             className={`h-full border-2 border-l-0 rounded-r-lg px-5 py-2 ${
                                 step >= 2
-                                    ? `text-white bg-[color:var(--darker-secondary-color)] border-[color:var(--darker-secondary-color)]`
-                                    : `border-[color:var(--darker-secondary-color)] border-dashed`
+                                    ? `text-white bg-blue-500 border-blue-500`
+                                    : `border-blue-500 border-dashed`
                             }`}
                         >
                             <div>02</div>
@@ -179,7 +179,7 @@ export default function signin({ adminIdCookie }) {
                                     <a
                                         href="https://invite-developers.vercel.app/"
                                         target="_blank"
-                                        className="text-[color:var(--darker-secondary-color)]"
+                                        className="text-blue-500"
                                     >
                                         link.
                                     </a>
@@ -187,7 +187,7 @@ export default function signin({ adminIdCookie }) {
 
                                 <button
                                     type="submit"
-                                    className="btn text-white bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] w-full mt-4 mb-4 sm:w-auto sm:mb-0"
+                                    className="btn text-white bg-blue-500 hover:bg-blue-200 w-full mt-4 mb-4 sm:w-auto sm:mb-0"
                                 >
                                     Verify
                                 </button>
@@ -226,7 +226,7 @@ export default function signin({ adminIdCookie }) {
                                     onClick={() =>
                                         router.push("/admin/dashboard")
                                     }
-                                    className="mt-4 bg-[color:var(--darker-secondary-color)] text-white py-2 px-4 rounded hover:bg-[color:var(--secondary-color)] transition ease-in-out"
+                                    className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-200 transition ease-in-out"
                                 >
                                     Go to your dashboard
                                 </button>

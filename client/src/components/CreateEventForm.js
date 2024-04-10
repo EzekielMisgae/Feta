@@ -237,7 +237,7 @@ const CreateEvent = () => {
                     </div>
                     <button
                         type="submit"
-                        className="text-center w-full px-4 py-2 bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] transition-all ease-in-out text-white font-bold rounded-lg"
+                        className="text-center w-full px-4 py-2 bg-blue-500 hover:bg-blue-200 transition-all ease-in-out text-white font-bold rounded-lg"
                     >
                         Create Event
                     </button>

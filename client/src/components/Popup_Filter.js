@@ -121,7 +121,7 @@ function Popup_Filter({
                 {/* Button to apply filters */}
                 <button
                     type="submit"
-                    className="bg-[color:var(--darker-secondary-color)] text-white py-2 px-4 rounded-lg hover:bg-[color:var(--secondary-color)]"
+                    className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-200"
                 >
                     Apply Filters
                 </button>

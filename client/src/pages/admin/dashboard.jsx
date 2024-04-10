@@ -211,7 +211,7 @@ function UserDashboard() {
                             {/* Button to open the popup filter */}
                             <button
                                 onClick={() => setPopupFilterOpen(true)}
-                                className="md:hidden flex items-center justify-center w-[4rem] h-[4rem] text-white rounded-full bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] hover:scale-105 shadow-lg cursor-pointer transition-all ease-in-out focus:outline-none"
+                                className="md:hidden flex items-center justify-center w-[4rem] h-[4rem] text-white rounded-full bg-blue-500 hover:bg-blue-200 hover:scale-105 shadow-lg cursor-pointer transition-all ease-in-out focus:outline-none"
                                 title="Filter Events"
                             >
                                 <RxHamburgerMenu className="w-6 h-6" />
@@ -219,7 +219,7 @@ function UserDashboard() {
                             {/* Button to open the event form */}
                             <button
                                 onClick={() => router.push("/admin/eventform")}
-                                className="mt-4 flex items-center justify-center w-[4rem] h-[4rem] text-white rounded-full bg-[color:var(--darker-secondary-color)] hover:bg-[color:var(--secondary-color)] hover:scale-105 shadow-lg cursor-pointer transition-all ease-in-out focus:outline-none"
+                                className="mt-4 flex items-center justify-center w-[4rem] h-[4rem] text-white rounded-full bg-blue-500 hover:bg-blue-200 hover:scale-105 shadow-lg cursor-pointer transition-all ease-in-out focus:outline-none"
                                 title="Create Events"
                             >
                                 <AiOutlinePlus className="w-6 h-6" />

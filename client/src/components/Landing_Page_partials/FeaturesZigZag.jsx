@@ -42,7 +42,7 @@ function FeaturesZigzag({ images }) {
                                 data-aos="fade-right"
                             >
                                 <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                                    <div className="text-xl text-[color:var(--darker-secondary-color)] mb-2">
+                                    <div className="text-xl text-blue-500 mb-2">
                                         More speed. High efficiency
                                     </div>
                                     <h3 className="h3 mb-3">
@@ -100,7 +100,7 @@ function FeaturesZigzag({ images }) {
                                 data-aos="fade-left"
                             >
                                 <div className="md:pl-4 lg:pl-12 xl:pl-16">
-                                    <div className="font-architects-daughter text-xl text-[color:var(--darker-secondary-color)] mb-2">
+                                    <div className="font-architects-daughter text-xl text-blue-500 mb-2">
                                         Super easy. Quick booking
                                     </div>
                                     <h3 className="h3 mb-3">
@@ -158,7 +158,7 @@ function FeaturesZigzag({ images }) {
                                 data-aos="fade-right"
                             >
                                 <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                                    <div className="font-architects-daughter text-xl text-[color:var(--darker-secondary-color)] mb-2">
+                                    <div className="font-architects-daughter text-xl text-blue-500 mb-2">
                                         Less effort. More work
                                     </div>
                                     <h3 className="h3 mb-3">

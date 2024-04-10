@@ -50,7 +50,7 @@ export default function NavBar() {
 
     return (
         <div className="mb-[8vh]">
-            <header className="bg-[color:var(--white-color)] fixed top-0 z-50 w-full shadow-md text-[color:var(--darker-secondary-color)]">
+            <header className="bg-[color:var(--white-color)] fixed top-0 z-50 w-full shadow-md text-blue-500">
                 <div className="container mx-auto flex items-center flex-col lg:flex-row justify-between p-4">
                     <div
                         onClick={() => router.push("/admin/dashboard")}
@@ -65,7 +65,7 @@ export default function NavBar() {
                         />
                         <h1 className="m-2 text-black font-bold text-4xl">
                             {"<In"}
-                            <span className="text-[color:var(--darker-secondary-color)]">
+                            <span className="bg-blue-500">
                                 Vit
                             </span>
                             {"e />"}
