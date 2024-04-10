@@ -32,7 +32,7 @@ const Admin = mongoose.model("Admin", adminSchema);
 
 const test_credential = new Admin({
     admin_id: "hqwkufywealufyewf.weiugbfre654wegreg",
-    email: "invite.testing@gmail.com",
+    email: "feta.testing@gmail.com",
     name: "test",
     pass: "invite123",
 });
