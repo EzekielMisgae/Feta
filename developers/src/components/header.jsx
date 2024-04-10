@@ -3,7 +3,7 @@ import "../styles/style.css";
 function Header() {
     return (
         <div className="head">
-            <h1>Generate Admin Credential- inVite</h1>
+            <h1>Generate Admin Credential- Feta</h1>
             <center>
                 <p>
                     Product owners can set admins access here. Currently in test
