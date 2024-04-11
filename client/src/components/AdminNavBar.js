@@ -64,7 +64,7 @@ export default function NavBar() {
                             className="h-8 w-8"
                         />
                         <h1 className="m-2 text-black font-bold text-4xl"> 
-                            <span className="bg-blue-500"> Feta </span> 
+                            <span className="text-blue-500"> Feta </span> 
                         </h1>
                     </div>
                     <nav className="text-sm">
@@ -74,12 +74,6 @@ export default function NavBar() {
                                 className="mr-4 cursor-pointer"
                             >
                                 <a>Dashboard</a>
-                            </li>
-                            <li
-                                onClick={() => router.push("/")}
-                                className="mr-4 cursor-pointer"
-                            >
-                                <a>About us</a>
                             </li>
                             <AdminDropdown adminData={adminData} />
                         </ul>

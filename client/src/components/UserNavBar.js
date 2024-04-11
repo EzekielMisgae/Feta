@@ -81,12 +81,6 @@ export default function NavBar() {
                             >
                                 <a>Past Events</a>
                             </li>
-                            <li
-                                onClick={() => router.push("/")}
-                                className="mr-4 cursor-pointer"
-                            >
-                                <a>About us</a>
-                            </li>
                             <UserDropdown userData={userData} />
                         </ul>
                     </nav>
