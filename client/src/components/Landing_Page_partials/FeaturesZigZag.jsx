@@ -1,165 +1,134 @@
-import React from 'react';
+import React from "react";
 import { FaCheck } from "react-icons/fa";
 
-function FeaturesZigzag() {
-    return (
-        <section>
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                <br />
-                <div className="py-12 md:py-20 border-t border-gray-800">
-                    <br />
-                    <br />
-                    {/* Section header */}
-                    <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-                        <h1 className="h2 mb-4">
-                            One product, unlimited solutions
-                        </h1>
-                        <p className="text-xl text-gray-500">
-                            Our platform provides a range of features, including event creation and the ability to take registrations, all while accommodating multiple admins.
-                        </p>
-                    </div>
+function EventTicketsShowcase() {
+  // Sample data for the tickets with images and key details
+  const tickets = [
+    {
+      title: "Global Tech Conference 2024",
+      description:
+        "Dive into the latest in technology and innovation with leaders from around the globe.",
+      imageUrl:
+        "https://storage.googleapis.com/techsauce-prod/ugc/uploads/2024/4/1713844557_1692263684_S__13025327_0_%282%29.jpg",
+      points: [
+        "Expert Speaker Panels",
+        "Innovative Technology Booths",
+        "Networking Opportunities",
+      ],
+      extraInfo: "Join us for a transformative experience this August.",
+    },
+    {
+      title: "Live Concert Series: Jazz Nights",
+      description:
+        "Experience the magic of live jazz with celebrated artists in an unforgettable setting.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZEm2nLtjl9zeIUIZDbDBRl5J717wmW7qlyK3M7JXHxLOvm27GURTSVYWB8NHBOv188AM&usqp=CAU",
+      points: [
+        "Exclusive Artist Lineup",
+        "Gourmet Food & Drinks",
+        "Ideal for Date Nights",
+      ],
+      extraInfo: "Tickets are limited, secure your spot now!",
+    },
+    {
+      title: "Marathon 2024: City by the Bay",
+      description:
+        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
+      points: [
+        "Scenic Urban Course",
+        "Health & Fitness Expo",
+        "For All Skill Levels",
+      ],
+      extraInfo: "Early bird registration opens soon.",
+    },
+    {
+      title: "Marathon 2024: City by the Bay",
+      description:
+        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
+      points: [
+        "Scenic Urban Course",
+        "Health & Fitness Expo",
+        "For All Skill Levels",
+      ],
+      extraInfo: "Early bird registration opens soon.",
+    },
+    {
+      title: "Marathon 2024: City by the Bay",
+      description:
+        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
+      points: [
+        "Scenic Urban Course",
+        "Health & Fitness Expo",
+        "For All Skill Levels",
+      ],
+      extraInfo: "Early bird registration opens soon.",
+    },
+    {
+      title: "Marathon 2024: City by the Bay",
+      description:
+        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
+      points: [
+        "Scenic Urban Course",
+        "Health & Fitness Expo",
+        "For All Skill Levels",
+      ],
+      extraInfo: "Early bird registration opens soon.",
+    },
+  ];
 
-                    {/* Items */}
-                    <div className="grid gap-20">
-                        {/* 1st item */}
-                        <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
-                            {/* Content */}
-                            <div
-                                className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
-                                data-aos="fade-right"
-                            >
-                                <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                                    <div className="text-xl text-blue-500 mb-2">
-                                        More speed. High efficiency
-                                    </div>
-                                    <h3 className="h3 mb-3">
-                                        Keep events on schedule
-                                    </h3>
-                                    <ul className="text-lg text-gray-500 -mb-2">
-                                        <li className="flex items-center mb-2">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>
-                                                You will have your own dashboard
-                                            </span>
-                                        </li>
-                                        <li className="flex items-center mb-2">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>Fill details and schedule your events</span>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>
-                                                Secure and quick access
-                                            </span>
-                                        </li>
-                                    </ul>
-                                    <p className="text-xl text-gray-500 mt-4">
-                                        In order to organize an event, you must log in as an event manager. The platform owner can assign event managers, or you may use test credentials. After logging in, you can begin managing the event.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* 2nd item */}
-                        <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
-                            {/* Content */}
-                            <div
-                                className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
-                                data-aos="fade-left"
-                            >
-                                <div className="md:pl-4 lg:pl-12 xl:pl-16">
-                                    <div className="font-architects-daughter text-xl text-blue-500 mb-2">
-                                        Super easy. Quick booking
-                                    </div>
-                                    <h3 className="h3 mb-3">
-                                        Book your favourite shows
-                                    </h3>
-                                    <ul className="text-lg text-gray-500 -mb-2">
-                                        <li className="flex items-center mb-2">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>
-                                                Generate online tickets for the event
-                                            </span>
-                                        </li>
-                                        <li className="flex items-center mb-2">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>Make online payment through CHAPA</span>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>
-                                                Stay informed about the events you've registered for.
-                                            </span>
-                                        </li>
-                                    </ul>
-                                    <p className="text-xl text-gray-500 mt-4">
-                                        On users dashboard, users can view all available events, select their preferred event, and proceed with the booking process.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* 3rd item */}
-                        <div className="md:grid md:grid-cols-12 md:gap-6 items-center">
-                            {/* Content */}
-                            <div
-                                className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
-                                data-aos="fade-right"
-                            >
-                                <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                                    <div className="font-architects-daughter text-xl text-blue-500 mb-2">
-                                        Less effort. More work
-                                    </div>
-                                    <h3 className="h3 mb-3">
-                                        Track check-in/check-out
-                                    </h3>
-                                    <ul className="text-lg text-gray-500 -mb-2">
-                                        <li className="flex items-center mb-2">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>
-                                                Automate manual work
-                                            </span>
-                                        </li>
-                                        <li className="flex items-center mb-2">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>Improves the security at venue</span>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <FaCheck
-                                                className="w-3 h-3 text-green-500 mr-2"
-                                            />
-                                            <span>
-                                                Keeping track of all attendees
-                                            </span>
-                                        </li>
-                                    </ul>
-                                    <p className="text-xl text-gray-500 mt-4">
-                                        Effortlessly monitor event participants and their details with our platform, and simplify the check-in and check-out process with our convenient features.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+      <div className="text-center pb-12 md:pb-16">
+        <h1 className="text-4xl font-bold mb-4">
+          Explore Exciting Events & Experiences
+        </h1>
+        <p className="text-xl text-gray-500">
+          Discover unique events and secure your tickets with ease. Enhance your
+          lifestyle and create memorable moments.
+        </p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-8">
+        {tickets.map((ticket, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-xl rounded-xl overflow-hidden hover:shadow-2xl transform hover:scale-105 transition-all duration-500"
+          >
+            <img
+              src={ticket.imageUrl}
+              alt="Event"
+              className="w-full h-56 object-cover"
+            />
+            <div className="p-5">
+              <h3 className="text-2xl text-blue-600 font-bold">
+                {ticket.title}
+              </h3>
+              <p className="text-lg text-gray-700 mb-4">{ticket.description}</p>
+              <ul className="list-none mb-3">
+                {ticket.points.map((point, idx) => (
+                  <li key={idx} className="flex items-center text-gray-500">
+                    <FaCheck className="w-5 h-5 text-green-500 mr-2" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-gray-500 mb-4">{ticket.extraInfo}</p>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Get Started
+              </button>
             </div>
-        </section>
-    );
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
-export default FeaturesZigzag;
+export default EventTicketsShowcase;
