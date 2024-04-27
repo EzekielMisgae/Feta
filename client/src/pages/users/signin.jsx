@@ -5,187 +5,164 @@ import { FiArrowLeft } from "react-icons/fi";
 import Cookies from "universal-cookie";
 
 export async function getServerSideProps(context) {
-    const cookies = new Cookies(context.req.headers.cookie);
-    const userId = cookies.get("user_token");
-    if (!userId) {
-        return {
-            props: { userIdCookie: null },
-        };
-    }
+  const cookies = new Cookies(context.req.headers.cookie);
+  const userId = cookies.get("user_token");
+  if (!userId) {
     return {
-        props: { userIdCookie: userId },
+      props: { userIdCookie: null },
     };
+  }
+  return {
+    props: { userIdCookie: userId },
+  };
 }
 
 export default function Signin({ userIdCookie }) {
-    const [email, setEmail] = useState("");
-    const [otp, setOtp] = useState("");
-    const [step, setStep] = useState(1);
-    const [message, setMessage] = useState({ errorMsg: "", successMsg: "" });
-    const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [step, setStep] = useState(1);
+  const [message, setMessage] = useState({ errorMsg: "", successMsg: "" });
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-    useEffect(() => {
-        if (userIdCookie) {
-            setStep(3);
-            setTimeout(() => {
-                setMessage({
-                    errorMsg: "",
-                    successMsg: "Redirecting you...",
-                });
-            }, 500);
-            setTimeout(() => {
-                router.push("/users/dashboard");
-            }, 800);
+  useEffect(() => {
+    if (userIdCookie) {
+      setMessage({
+        errorMsg: "",
+        successMsg: "Redirecting you...",
+      });
+      setTimeout(() => router.push("/users/dashboard"), 800);
+    }
+  }, [userIdCookie, router]);
+
+  const handleVerifyEmail = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
         }
-    }, []);
+      );
+      const data = await response.json();
+      setLoading(false);
+      if (response.ok) {
+        setMessage({ errorMsg: "", successMsg: data.msg });
+        setStep(2);
+      } else {
+        throw new Error(data.msg || "Email not registered.");
+      }
+    } catch (error) {
+      setLoading(false);
+      setMessage({ errorMsg: error.message, successMsg: "" });
+    }
+  };
 
-    const handleVerifyEmail = async (event) => {
-        event.preventDefault();
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                }),
-            }
-        );
-        if (response.status === 200) {
-            const data = await response.json();
-            setMessage({ errorMsg: "", successMsg: data.msg });
-            setStep(2);
-        } else {
-            setMessage({
-                errorMsg: "Email not registered. Redirecting you to Sign Up...",
-                successMsg: "",
-            });
-            setTimeout(() => {
-                router.push("/users/signup");
-            }, 1700);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, otp }),
         }
-    };
+      );
+      const data = await response.json();
+      setLoading(false);
+      if (response.ok) {
+        setUserToken(data.user_id);
+        setMessage({ errorMsg: "", successMsg: "Successfully verified." });
+        setTimeout(() => router.push("/users/dashboard"), 800);
+      } else {
+        throw new Error(data.msg || "Verification failed.");
+      }
+    } catch (error) {
+      setLoading(false);
+      setMessage({ errorMsg: error.message, successMsg: "" });
+    }
+  };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    otp: otp,
-                }),
-            }
-        );
-        const data = await response.json();
-        if (response.status === 200) {
-            setMessage({ errorMsg: "", successMsg: data.msg });
-            setStep(3);
-            setUserToken(data.user_id);
-        } else {
-            setMessage({ errorMsg: data.msg, successMsg: "" });
-        }
-    };
-
-    return (
-        <div className="m-2">
-            <FiArrowLeft
-                onClick={() => router.push("/")}
-                size={24}
-                className="cursor-pointer"
-            />
-            <div className="text-center text-3xl font-bold">Sign In</div>
-            <div className="max-w-md mx-auto mt-10">
-                {message.errorMsg && (
-                    <div className="rounded p-3 my-2 bg-red-200 text-red-600 font-medium">
-                        {message.errorMsg}
-                    </div>
-                )}
-                {message.successMsg && (
-                    <div className="rounded p-3 my-2 bg-green-200 text-green-600 font-medium">
-                        {message.successMsg}
-                    </div>
-                )}
-                <div className="bg-white p-5 rounded-lg mt-2">
-                    {step === 1 && (
-                        <form onSubmit={handleVerifyEmail}>
-                            <label className="block mb-2 text-sm font-medium text-gray-700">
-                                Enter your Registered Email address
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={email}
-                                className="bg-gray-100 p-2 mx-2 mb-4 focus:outline-none rounded-lg w-full"
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <button
-                                type="submit"
-                                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                            >
-                                Verify
-                            </button>
-                        </form>
-                    )}
-                    {step === 2 && (
-                        <form onSubmit={handleSubmit}>
-                            <div>
-                                <label className="block mb-2 text-sm font-medium text-gray-700">
-                                    Enter Verification Code
-                                </label>
-                                <input
-                                    type="text"
-                                    id="otp"
-                                    name="otp"
-                                    autoComplete="none"
-                                    required
-                                    value={otp}
-                                    className="bg-gray-100 p-2 mx-2 mb-4 focus:outline-none rounded-lg w-10/12"
-                                    onChange={(e) => setOtp(e.target.value)}
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                            >
-                                Submit
-                            </button>
-                        </form>
-                    )}
-                    {step === 3 && (
-                        <div>
-                            <div className="bg-green-50 border-b border-green-400 text-green-800 text-sm p-4 flex justify-between">
-                                <div>
-                                    <div className="flex items-center">
-                                        <p>
-                                            <span className="font-bold">
-                                                Hey there!{" "}
-                                            </span>
-                                            Welcome back, you're successfully
-                                            signed in!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button
-                                onClick={() =>
-                                    router.push("/users/dashboard")
-                                }
-                                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                            >
-                                Go to your dashboard
-                            </button>
-                        </div>
-                    )}
-                </div>
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-lg shadow-md">
+        <FiArrowLeft
+          onClick={() => router.back()}
+          size={24}
+          className="cursor-pointer mb-4"
+        />
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">
+          Sign In
+        </h2>
+        {message.errorMsg && (
+          <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md">
+            {message.errorMsg}
+          </div>
+        )}
+        {message.successMsg && (
+          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md">
+            {message.successMsg}
+          </div>
+        )}
+        {loading && (
+          <div className="text-center text-blue-500">Processing...</div>
+        )}
+        <form
+          onSubmit={step === 1 ? handleVerifyEmail : handleSubmit}
+          className="mt-8 space-y-6"
+        >
+          {step === 1 && (
+            <div>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                placeholder="Enter your email"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
-        </div>
-    );
+          )}
+          {step === 2 && (
+            <div>
+              <input
+                id="otp"
+                name="otp"
+                type="text"
+                autoComplete="off"
+                required
+                placeholder="Verification code"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+            </div>
+          )}
+          <button
+            type="submit"
+            disabled={loading}
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            {loading
+              ? "Loading..."
+              : step === 1
+              ? "Send Verification Code"
+              : "Verify and Sign In"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }
