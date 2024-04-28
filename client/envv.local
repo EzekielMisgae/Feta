@@ -1,0 +1,3 @@
+NEXT_PUBLIC_BASE_URL = http://localhost:3000
+NEXT_PUBLIC_CHAPA_SECRET = CHAPUBK_TEST-uqGW3WhaOYIjeZimalfFIQHb9Yfq4GQI #the secret key for the chapa api
+NEXT_PUBLIC_API_URL = http://localhost:5000
