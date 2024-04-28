@@ -53,6 +53,7 @@ const postEvent = async (req, res) => {
     const Price = req.body.price;
     const Profile = req.body.profile;
     const Cover = req.body.cover;
+    const Category = req.body.category;
     const Organizer = req.body.organizer;
 
     const adminId = req.body.admin_id;
@@ -75,6 +76,7 @@ const postEvent = async (req, res) => {
         price: Price,
         profile: Profile,
         cover: Cover,
+        category: Category,
         organizer: Organizer,
     });
 
@@ -107,6 +109,7 @@ const postEvent = async (req, res) => {
                         Cover == null
                             ? "https://eventplanning24x7.files.wordpress.com/2018/04/events.png"
                             : Cover,
+                    category: Category,
                     organizer: Organizer,
                 },
             },
