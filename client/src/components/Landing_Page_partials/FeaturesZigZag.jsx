@@ -1,8 +1,11 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 
 function EventTicketsShowcase() {
   // Sample data for the tickets with images and key details
+  const router = useRouter();
+
   const tickets = [
     {
       title: "Global Tech Conference 2024",
@@ -120,7 +123,10 @@ function EventTicketsShowcase() {
                 ))}
               </ul>
               <p className="text-sm text-gray-500 mb-4">{ticket.extraInfo}</p>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                onClick={() => router.push("/users/signup")}
+              >
                 Get Started
               </button>
             </div>
