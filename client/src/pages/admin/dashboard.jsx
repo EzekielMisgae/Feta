@@ -19,7 +19,7 @@ function UserDashboard() {
         keyword: "",
         category: "",
         dateRange: "",
-        price: [10, 3000],
+        price: [10, 10000],
     });
     const [originalEvents, setOriginalEvents] = useState([]);
 
@@ -69,6 +69,14 @@ function UserDashboard() {
                 return false;
             }
 
+            // Check if category filter matches
+            if (
+                filterOptions.category &&
+                event.category !== filterOptions.category
+            ) {
+                return false;
+            }
+
             // Check if date range filter matches
             if (filterOptions.dateRange) {
                 const date = filterOptions.dateRange;
@@ -100,12 +108,12 @@ function UserDashboard() {
             keyword: "",
             category: "",
             dateRange: "",
-            price: [10, 3000],
+            price: [10, 10000],
         });
         setFilteredEvents(allEvents);
         setPopupFilterOpen(false);
     };
-
+    
     return (
         <div className="pt-20 lg:pt-8 overflow-y-hidden bg-[color:var(--primary-color)]">
             <AdminNavBar />
@@ -190,7 +198,7 @@ function UserDashboard() {
                                                         <span className="w-full flex flex-row items-center">
                                                             <FaUsers />
                                                             <span className="ml-2 text-sm">
-                                                                4,92
+                                                                {event.category}
                                                             </span>
                                                         </span>
                                                         <p className="text-sm text-gray-800 mt-2">

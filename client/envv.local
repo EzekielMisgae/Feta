@@ -1,0 +1,4 @@
+CHAPA_AUTH = CHASECK_TEST-QSwngucRwPMlReFZwbMacCbpcyhsnBmg
+CHAPA_URL =  https://api.chapa.co/v1/transaction/initialize
+NEXT_PUBLIC_API_URL = http://localhost:5000
+NEXT_PUBLIC_BASE_URL = http://localhost:5000

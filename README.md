@@ -48,7 +48,12 @@ Our event management system is built on a microservice architecture. This allows
 <p>For the client-side:</p>
 <pre><code class="language-arduino">npm run dev</code></pre>
 <p>For the server-side:</p>
-<pre><code>nodemon index.js</code></pre>
+<pre><code>nodemon index.js </code> or <code> node --no-deprecation index.js</code></pre>
+<p>For the Chapa payment:</p>
+<pre><code>npm install</code> to install all required dependencies</pre>
+<p>To run the payment:</p>
+<code>npm run dev</code> to start the local server
+<pre><code>5001</code> it will run on this URL after the server starts</pre>
 <p>For the developer-side:</p>
 <pre><code class="language-arduino">npm run dev</code></pre>
 <h4>Note: Make sure to follow the exact steps mentioned above to avoid any errors or issues.</h4>

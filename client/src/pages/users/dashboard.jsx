@@ -18,7 +18,7 @@ function UserDashboard() {
     keyword: "",
     category: "",
     dateRange: "",
-    price: [10, 3000],
+    price: [10, 10000],
   });
 
   const fetchAllEvents = async () => {
@@ -54,6 +54,11 @@ function UserDashboard() {
         return false;
       }
 
+      // Check if category filter matches
+      if (filterOptions.category && event.category !== filterOptions.category) {
+        return false;
+      }
+
       // Check if date range filter matches
       if (filterOptions.dateRange) {
         const date = filterOptions.dateRange;
@@ -85,7 +90,7 @@ function UserDashboard() {
       keyword: "",
       category: "",
       dateRange: "",
-      price: [10, 3000],
+      price: [10, 10000],
     });
     setFilteredEvents(allEvents);
     setPopupFilterOpen(false);
@@ -164,7 +169,9 @@ function UserDashboard() {
                           <div className="flex flex-col justify-end items-center">
                             <span className="w-full flex flex-row items-center">
                               <FaUsers />
-                              <span className="ml-2 text-sm">4,92</span>
+                              <span className="ml-2 text-sm">
+                                {event.category}
+                              </span>
                             </span>
                             <p className="text-sm text-gray-800 mt-2">
                               <strong className="whitespace-nowrap">
