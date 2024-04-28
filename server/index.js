@@ -23,7 +23,9 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    .then(() => {})
+    .then(() => {
+        console.log("connected to database")
+    })
     .catch((err) => {
         console.log(err);
     });
@@ -50,6 +52,6 @@ app.get("/", (req, res) => {
     res.send("Event Management micro services API.");
 });
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 5500, () => {
     console.log(`Server Running on🚀: ${process.env.PORT}`);
 });

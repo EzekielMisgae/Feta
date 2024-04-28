@@ -1,35 +1,68 @@
 import { useRouter } from "next/router";
+import Image from "next/image"; // Make sure to import Image from 'next/image' for optimized image loading
 
 function Header() {
-    const router = useRouter();
+  const router = useRouter();
 
-    return (
-        <header className="fixed top-0 w-full z-20 bg-white shadow-md">
-            <div className="max-w-0xl mx-auto px-4 sm:px-6">
-                <div className="flex items-center justify-between h-20">
-                    <nav className="flex-grow">
-                        <ul className="flex justify-end items-center space-x-4">
-                            <li>
-                                <a className="btn-sm text-white bg-blue-500 hover:bg-blue-200 w-full mb-4 sm:w-auto sm:mb-0" href="/users/signin">
-                                    Signin
-                                </a>
-                            </li>
-                            <li>
-                                <a className="btn-sm text-white bg-blue-500 hover:bg-blue-200 w-full mb-4 sm:w-auto sm:mb-0" href="/users/signup">
-                                    Signup
-                                </a>
-                            </li>
-                            <li>
-                                <a onClick={() => router.push("/admin/auth")} className="btn-sm text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4">
-                                    Event Manager
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-    );
+  return (
+    <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-3">
+          {/* Logo as an image */}
+          <div
+            className="flex justify-start lg:w-0 lg:flex-1"
+            onClick={() => router.push("/")}
+          >
+            <Image
+              src="/path-to-your-logo.png" // Replace with the path to your actual logo image
+              alt="Logo"
+              width={120}
+              height={60}
+              className="cursor-pointer"
+            />
+          </div>
+          <nav className="hidden md:flex space-x-10">
+            <button
+              className="text-gray-700 bg-white hover:bg-gray-100 px-4 py-2 rounded-md transition duration-300"
+              onClick={() => router.push("/users/signin")}
+            >
+              Sign In
+            </button>
+            {/* Emphasize the Sign Up button as a call to action */}
+
+            <button
+              className="text-gray-700 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md transition duration-300"
+              onClick={() => router.push("/admin/auth")}
+            >
+              Event Manager
+            </button>
+          </nav>
+          {/* Mobile Menu Icon */}
+          <div className="flex items-center md:hidden">
+            <button
+              onClick={() => console.log("open menu")}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 }
 
 export default Header;
