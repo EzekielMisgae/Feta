@@ -7,7 +7,7 @@ function Dashboard_Filter({
         keyword: "",
         category: "",
         dateRange: "",
-        price: [10, 3000],
+        price: [10, 10000],
     },
     setFilterOptions,
     handleFilterClear,
@@ -71,9 +71,16 @@ function Dashboard_Filter({
                         className="filterInput"
                     >
                         <option value="">Select a category...</option>
-                        <option value="category1">Technical</option>
-                        <option value="category2">Comic</option>
-                        <option value="category3">Personalized</option>
+                        <option value="music">Music</option>
+                        <option value="sport">Sports</option>
+                        <option value="business">Business</option>
+                        <option value="social">Social</option>
+                        <option value="educational">Educational</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="community">Community</option>
+                        <option value="foodDrink">Food and Drink</option>
+                        <option value="technology">Technology</option>
+                        <option value="healthWellness">Health and Wellness</option>
                     </select>
                 </div>
                 {/* Input field to filter through a date range */}
@@ -98,7 +105,7 @@ function Dashboard_Filter({
                     <Slider
                         range
                         min={0}
-                        max={3000}
+                        max={10000}
                         step={10}
                         defaultValue={[10, 100]}
                         value={filterOptions.price}
