@@ -89,7 +89,7 @@ function Dashboard_Filter({
                         htmlFor="dateRange"
                         className="font-medium block mb-1"
                     >
-                        Date Range
+                    Starting from Date
                     </label>
                     <input
                         type="date"
