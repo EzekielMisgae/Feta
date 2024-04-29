@@ -1,6 +1,6 @@
 import { setUserToken } from "@/utils/setUserToken";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import Cookies from "universal-cookie";
 
@@ -18,151 +18,182 @@ export async function getServerSideProps(context) {
 }
 
 export default function Signin({ userIdCookie }) {
-  const [email, setEmail] = useState("");
-  const [otp, setOtp] = useState("");
-  const [step, setStep] = useState(1);
-  const [message, setMessage] = useState({ errorMsg: "", successMsg: "" });
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+    const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState("");
+    const [message, setMessage] = useState({ errorMsg: "", successMsg: "" });
+    const router = useRouter();
 
-  useEffect(() => {
-    if (userIdCookie) {
-      setMessage({
-        errorMsg: "",
-        successMsg: "Redirecting you...",
-      });
-      setTimeout(() => router.push("/users/dashboard"), 800);
-    }
-  }, [userIdCookie, router]);
-
-  const handleVerifyEmail = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
+    useEffect(() => {
+        if (userIdCookie) {
+            setTimeout(() => {
+                setMessage({
+                    errorMsg: "",
+                    successMsg: "Redirecting you...",
+                });
+            }, 500);
+            setTimeout(() => {
+                router.push("/users/dashboard");
+            }, 800);
         }
-      );
-      const data = await response.json();
-      setLoading(false);
-      if (response.ok) {
-        setMessage({ errorMsg: "", successMsg: data.msg });
-        setStep(2);
-      } else {
-        throw new Error(data.msg || "Email not registered.");
-      }
-    } catch (error) {
-      setLoading(false);
-      setMessage({ errorMsg: error.message, successMsg: "" });
-    }
-  };
+    }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, otp }),
+    const handleVerifyEmail = async (event) => {
+        event.preventDefault();
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/user/signin`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                }),
+            }
+        );
+        if (response.status === 200) {
+            const data = await response.json();
+            setMessage({ errorMsg: "", successMsg: data.msg });
+            setOtp(""); // Reset OTP field
+        } else {
+            setMessage({
+                errorMsg: "Email not registered. Redirecting you to Sign Up...",
+                successMsg: "",
+            });
+            setTimeout(() => {
+                router.push("/users/signup");
+            }, 1700);
         }
-      );
-      const data = await response.json();
-      setLoading(false);
-      if (response.ok) {
-        setUserToken(data.user_id);
-        setMessage({ errorMsg: "", successMsg: "Successfully verified." });
-        setTimeout(() => router.push("/users/dashboard"), 800);
-      } else {
-        throw new Error(data.msg || "Verification failed.");
-      }
-    } catch (error) {
-      setLoading(false);
-      setMessage({ errorMsg: error.message, successMsg: "" });
-    }
-  };
+    };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-lg shadow-md">
-        <FiArrowLeft
-          onClick={() => router.back()}
-          size={24}
-          className="cursor-pointer mb-4"
-        />
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">
-          Sign In
-        </h2>
-        {message.errorMsg && (
-          <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md">
-            {message.errorMsg}
-          </div>
-        )}
-        {message.successMsg && (
-          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md">
-            {message.successMsg}
-          </div>
-        )}
-        {loading && (
-          <div className="text-center text-blue-500">Processing...</div>
-        )}
-        <form
-          onSubmit={step === 1 ? handleVerifyEmail : handleSubmit}
-          className="mt-8 space-y-6"
-        >
-          {step === 1 && (
-            <div>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="Enter your email"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/user/signin/verify`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    otp: otp,
+                }),
+            }
+        );
+        const data = await response.json();
+        if (response.status === 200) {
+            setMessage({ errorMsg: "", successMsg: data.msg });
+            setUserToken(data.user_id);
+            setTimeout(() => {
+                router.push("/users/dashboard");
+            }, 800);
+        } else {
+            setMessage({ errorMsg: data.msg, successMsg: "" });
+        }
+    };
+
+    // Check if the OTP is a 6-digit number
+    const isOtpValid = otp.length === 6 && !isNaN(otp);
+
+    return (
+        <div>
+            <div className="m-2">
+            <FiArrowLeft
+                onClick={() => router.push("/")}
+                size={24}
+                className="cursor-pointer"
+            />
             </div>
-          )}
-          {step === 2 && (
-            <div>
-              <input
-                id="otp"
-                name="otp"
-                type="text"
-                autoComplete="off"
-                required
-                placeholder="Verification code"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-              />
+            <br/><br/><br/><br/>
+            {message.errorMsg && (
+                <div className="rounded p-2 my-2 bg-red-200 text-red-600 font-medium text-center">
+                    {message.errorMsg}
+                </div>
+            )}
+            {message.successMsg && (
+                <div className="rounded p-2 my-2 bg-green-200 text-green-600 font-medium text-center">
+                    {message.successMsg}
+                </div>
+            )}
+            <br/>
+            
+            <div class="space-y-2 text-center flex flex-col items-center justify-center ">
+                <div class="space-y-2">
+                    <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl/none">Welcome Back to Feta</h1>
+                    <p class="mx-auto max-w-[600px] text-gray-500 dark:text-gray-400">
+                    Sign in to discover and ticket your favorite events.
+                    </p>
+                </div>
             </div>
-          )}
-          <button
-            type="submit"
-            disabled={loading}
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            {loading
-              ? "Loading..."
-              : step === 1
-              ? "Send Verification Code"
-              : "Verify and Sign In"}
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+            <br/>
+            <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow flex gap-8">
+                <div className="flex flex-col items-center p-4 w-1/3">
+                    <div className="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-gray-400"
+                        >
+                            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                            <circle cx="12" cy="13" r="3"></circle>
+                        </svg>
+                    </div>
+                    <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 mt-4">
+                    </button>
+                </div>
+                
+                <div className="flex flex-col justify-between w-2/3 mt-8">
+                    <form onSubmit={handleVerifyEmail}>
+                        <div className="flex gap-4">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                placeholder="Email"
+                                required
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <button
+                                type="submit"
+                                className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-full bg-green-400 hover:bg-green-300 text-white"
+                            >
+                                Verify
+                            </button>
+                        </div>
+
+                    </form>
+                    <input
+                        type="text"
+                        id="otp"
+                        name="otp"
+                        autoComplete="none"
+                        required
+                        value={otp}
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        placeholder="OTP"
+                        disabled={!email} // Disable OTP field if email is not filled
+                        onChange={(e) => setOtp(e.target.value)}
+                    />
+                    <button
+                        type="submit"
+                        className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-full bg-blue-400 hover:bg-blue-300 text-white"
+                        disabled={!email || !isOtpValid} // Disable Signin/Submit button if email is not filled or OTP is not a 6-digit number
+                        onClick={handleSubmit}
+                    >
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 }

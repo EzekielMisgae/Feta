@@ -9,6 +9,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 
+import { format } from "date-fns";
+
 function UserDashboard() {
     const router = useRouter();
     const picRatio = 0.606;
@@ -34,8 +36,12 @@ function UserDashboard() {
         }
         try {
             const data = await response.json();
-            // console.log(data.registeredEvents);
-            setPastEvents(data.registeredEvents);
+            const currentDate = new Date();
+            const filteredEvents = data.registeredEvents.filter((event) => {
+                const eventDate = new Date(event.date);
+                return eventDate < currentDate;
+            });
+            setPastEvents(filteredEvents);
         } catch (error) {
             console.error("Invalid JSON string:", error.message);
         }
@@ -50,14 +56,29 @@ function UserDashboard() {
         keyword: "",
         category: "",
         dateRange: "",
-        price: [10, 100],
+        price: [10, 3000],
     });
 
     const handleFilterApply = () => {
-        // Perform the search/filter operation based on the filter options
-        // ...
-        // console.log(filterOptions);
-        setPopupFilterOpen(false); // Close the popup filter
+        setPopupFilterOpen(false);
+    };
+
+    const handleClearFilter = () => {
+        setFilterOptions({
+            keyword: "",
+            category: "",
+            dateRange: "",
+            price: [10, 3000],
+        });
+    };
+
+    const handleSortByDate = () => {
+        const sortedEvents = [...pastEvents].sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA - dateB;
+        });
+        setPastEvents(sortedEvents);
     };
 
     return (
@@ -73,6 +94,12 @@ function UserDashboard() {
                                 setFilterOptions={setFilterOptions}
                                 handleFilterApply={handleFilterApply}
                             />
+                            <button
+                                onClick={handleClearFilter}
+                                className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Clear Filter
+                            </button>
                         </div>
                         {/* Render the popup filter for small screens */}
                         {popupFilterOpen && (
@@ -95,15 +122,21 @@ function UserDashboard() {
                                 <h2 className="text-lg font-medium mb-4">
                                     Events
                                 </h2>
+                                <div className="flex justify-end mb-4">
+                                    <button
+                                        onClick={handleSortByDate}
+                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                    >
+                                        Sort by Date
+                                    </button>
+                                </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                                     {pastEvents.length === 0 ? (
                                         <p>No past events</p>
                                     ) : (
                                         pastEvents.map((event) => (
-                                            <div
-                                                className="hover:scale-105 transition-all mt-5 bg-[color:var(--white-color)] rounded-lg shadow-md px-3 py-3 grayscale opacity-80"
-                                                key={event._id}
-                                            >
+                                            <div className="hover:scale-105 transition-all mt-5 bg-[color:var(--white-color)] rounded-lg shadow-md px-3 py-3 grayscale opacity-80"
+                                                key={event._id} >
                                                 <div className="relative h-[25rem]">
                                                     {event.profile && (
                                                         <Image
@@ -131,7 +164,12 @@ function UserDashboard() {
                                                             {event.venue}
                                                         </p>
                                                         <p className="text-sm text-gray-800">
-                                                            {event.date}
+                                                            {format(
+                                                                new Date(
+                                                                    event.date
+                                                                ),
+                                                                "MMMM dd, yyyy"
+                                                            )}
                                                         </p>
                                                     </div>
                                                     {/* Star component */}
@@ -139,7 +177,7 @@ function UserDashboard() {
                                                         <span className="w-full flex flex-row items-center">
                                                             <FaUsers />
                                                             <span className="ml-2 text-sm">
-                                                                4,92
+                                                                Rating
                                                             </span>
                                                         </span>
                                                         <p className="text-sm text-gray-800 mt-2">
@@ -149,6 +187,7 @@ function UserDashboard() {
                                                         </p>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         ))
                                     )}

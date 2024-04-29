@@ -19,6 +19,7 @@ app.use(cookieParser());
 // route - http://localhost:5000/user/signin
 const signIn = async (req, res) => {
     const Email = req.body.email;
+    const Password = req.body.pass
 
     User.find({ email: Email }, async function (err, docs) {
         if (docs.length !== 0) {
@@ -45,10 +46,11 @@ const signIn = async (req, res) => {
 
             const otp = {
                 email: Email,
+                pass: Password,
                 otp: OTP,
             };
 
-            sendSMS(Email, otp.otp);
+            sendSMS(Email, Password, otp.otp);
 
             console.log("Generated otp for signin: ", otp);
             //encrypting the otp and then saving to Otp_table
@@ -57,6 +59,7 @@ const signIn = async (req, res) => {
 
             const newUserLogin = new OtpAuth({
                 email: otp.email,
+                pass: otp.password,
                 otp: otp.otp,
             });
 
@@ -78,6 +81,7 @@ const signIn = async (req, res) => {
 // route - http://localhost:5000/user/signup
 const signUp = async (req, res) => {
     const Email = req.body.email;
+    const Pssword = req.body.pass;
 
     //validating whether user already exists or not
 
@@ -89,7 +93,7 @@ const signUp = async (req, res) => {
         } else {
             //clearing otp auth table
             try {
-                await OtpAuth.deleteMany({ email: Email }, function (err) {
+                await OtpAuth.deleteMany({ email: Email, pass: Password }, function (err) {
                     if (err) {
                         console.log(err);
                     } else {
@@ -101,6 +105,7 @@ const signUp = async (req, res) => {
             }
 
             // generate otp for new user
+            const Password = req.body.pass;
             const OTP = otpGenerator.generate(6, {
                 digits: true,
                 upperCaseAlphabets: false,
@@ -110,11 +115,12 @@ const signUp = async (req, res) => {
 
             const otp = {
                 email: Email,
+                pass: Password,
                 otp: OTP,
             };
             console.log("Before hashing: ", otp);
 
-            sendSMS(Email, otp.otp);
+            sendSMS(Email, Password, otp.otp);
 
             //encrypting the otp and then saving to Otp_table
             const salt = await bcrypt.genSalt(10);
@@ -122,6 +128,7 @@ const signUp = async (req, res) => {
 
             const newUserLogin = new OtpAuth({
                 email: otp.email,
+                pass: otp.pass,
                 otp: otp.otp,
             });
 
@@ -138,9 +145,10 @@ const signUp = async (req, res) => {
 // route - http://localhost:5000/user/signin/verify
 const verifyLogin = async (req, res) => {
     const Email = req.body.email;
+    const Password = req.body.pass;
     const inputOtp = req.body.otp;
 
-    OtpAuth.find({ email: Email }, async function (err, docs) {
+    OtpAuth.find({ email: Email, pass: Password }, async function (err, docs) {
         if (docs.length === 0) {
             return res
                 .status(400)
@@ -150,8 +158,8 @@ const verifyLogin = async (req, res) => {
 
             const validUser = await bcrypt.compare(inputOtp, generatedOtp);
 
-            if (Email === docs[0].email && validUser) {
-                User.find({ email: Email }, async function (err, user) {
+            if (Email === docs[0].email && Password === docs[0].pass && validUser) {
+                User.find({ email: Email, pass: Password }, async function (err, user) {
                     console.log(user);
                     res.status(200).send({
                         msg: "Sign-In successful!",
@@ -173,8 +181,9 @@ const verifyOtp = async (req, res) => {
     const inputOtp = req.body.otp;
     const Email = req.body.email;
     const name = req.body.username;
+    const Password = req.body.pass;
 
-    OtpAuth.find({ email: Email }, async function (err, docs) {
+    OtpAuth.find({ email: Email, pass: Password }, async function (err, docs) {
         if (docs.length === 0) {
             return res.status(400).send("The OTP expired. Please try again!");
         } else {
@@ -182,10 +191,11 @@ const verifyOtp = async (req, res) => {
 
             const validUser = await bcrypt.compare(inputOtp, generatedOtp);
 
-            if (Email === docs[0].email && validUser) {
+            if (Email === docs[0].email && Password === docs[0].pass && validUser) {
                 const secret = JWT_SECRET;
                 const payload = {
                     email: req.body.email,
+                    pass: req.body.pass,
                 };
                 const token = jwt.sign(payload, secret);
 
@@ -193,6 +203,7 @@ const verifyOtp = async (req, res) => {
                 const newUser = new User({
                     user_token: token,
                     username: name,
+                    pass: Password,
                     email: Email,
                     contactNumber: number,
                 });
@@ -202,7 +213,7 @@ const verifyOtp = async (req, res) => {
                     else console.log("Signup successful: ", newUser);
                 });
 
-                OtpAuth.deleteMany({ email: Email }, async function (err) {
+                OtpAuth.deleteMany({ email: Email, pass: Password }, async function (err) {
                     if (err) {
                         console.log(err);
                     } else {
@@ -213,7 +224,7 @@ const verifyOtp = async (req, res) => {
                 return res
                     .status(200)
                     .send({
-                        msg: "Account creation successful!",
+                        msg: "Account creation successful! Redirecting to Dashboard.",
                         user_id: token,
                     });
             } else {

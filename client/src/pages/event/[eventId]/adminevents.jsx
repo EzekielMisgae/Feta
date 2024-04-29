@@ -183,65 +183,74 @@ function AdminEventPage() {
             </div>
           </div>
 
-          {/* Third div with major event details */}
-          <div className="container mt-4 bg-[color:var(--primary-color)]">
-            <div className="container">
-              <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
-                <div className="mb-4 max-w-5xl bg-white px-6 py-4 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    About the Event
-                  </h3>
-                  {Array(3)
-                    .fill()
-                    .map((_, index) => (
-                      <p key={index} className="text-gray-600 text-md">
-                        {eventData.description}
-                      </p>
-                    ))}
+                    {/* Third div with major event details */}
+                    <div className="container mt-4 bg-[color:var(--primary-color)]">
+                        <div className="container">
+                            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
+                                <div className="mb-4 max-w-5xl bg-white px-6 py-4 rounded-lg shadow-md">
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                                        About the Event
+                                    </h3>
+                                    {Array(1)
+                                        .fill()
+                                        .map((_, index) => (
+                                            <p
+                                                key={index}
+                                                className="text-gray-600 text-md"
+                                            >
+                                                {eventData.description}
+                                            </p>
+                                        ))}
+                                </div>
+                                <div className="mb-4 bg-white px-6 py-4 rounded-lg shadow-md">
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                                        Event Overview
+                                    </h3>
+                                    <ul className="text-gray-600">
+                                        {[
+                                            {
+                                                type: "Total Registrations",
+                                                price: eventData.participants
+                                                    .length,
+                                            },
+                                            {
+                                                type: "Event Created At",
+                                                price: `${dateString} at ${timeString}`,
+                                            },
+                                        ].map((item, index) => (
+                                            <li
+                                                className="flex items-center h-16 py-1 rounded-md p-4 mb-2 hover:shadow-md"
+                                                key={index}
+                                            >
+                                                <span className="w-1/2">
+                                                    {item.type}
+                                                </span>
+                                                <span className="w-1/2 text-center">
+                                                    {item.price}
+                                                </span>
+                                            </li>
+                                        ))}
+                                        <li className="flex items-center h-16 py-1 rounded-md p-4 mb-2">
+                                            <button
+                                                onClick={deleteEvent}
+                                                className="w-full bg-blue-500 hover:bg-blue-200 text-white py-1 px-2 rounded-md text-sm transition duration-300 ease-in-out"
+                                            >
+                                                Delete this event
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <p className="text-sm text-blue-500 mt-6">
+                                        *Caution: This action will permanently
+                                        delete the event and all associated
+                                        data. Are you sure you want to proceed?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="mb-4 bg-white px-6 py-4 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    Event Overview
-                  </h3>
-                  <ul className="text-gray-600">
-                    {[
-                      {
-                        type: "Total Registrations",
-                        price: eventData.participants.length,
-                      },
-                      {
-                        type: "Event Created At",
-                        price: `${dateString} at ${timeString}`,
-                      },
-                    ].map((item, index) => (
-                      <li
-                        className="flex items-center h-16 py-1 rounded-md p-4 mb-2 hover:shadow-md"
-                        key={index}
-                      >
-                        <span className="w-1/2">{item.type}</span>
-                        <span className="w-1/2 text-center">{item.price}</span>
-                      </li>
-                    ))}
-                    <li className="flex items-center h-16 py-1 rounded-md p-4 mb-2">
-                      <button
-                        onClick={deleteEvent}
-                        className="w-full bg-blue-500 hover:bg-blue-200 text-white py-1 px-2 rounded-md text-sm transition duration-300 ease-in-out"
-                      >
-                        Delete this event
-                      </button>
-                    </li>
-                  </ul>
-                  <p className="text-sm text-blue-500 mt-6">
-                    *Caution: This action will permanently delete the event and
-                    all associated data. Are you sure you want to proceed?
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    );
+        );
 }
 
 export default AdminEventPage;
