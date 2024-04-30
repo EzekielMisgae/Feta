@@ -54,13 +54,6 @@ export default function NavBar() {
                         onClick={() => router.push("/users/dashboard")}
                         className="flex items-center gap-x-3 cursor-pointer"
                     >
-                        <Image
-                            src="/favicon_io/android-chrome-192x192.png"
-                            width={500}
-                            height={500}
-                            alt="Logo"
-                            className="h-8 w-8"
-                        />
                         <h1 className="m-2 text-black font-bold text-4xl"> 
                             <span className="text-blue-500"> Feta </span> 
                         </h1>

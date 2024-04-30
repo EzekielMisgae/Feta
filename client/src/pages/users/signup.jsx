@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import Cookies from "universal-cookie";
+import Link from "next/link"
 
 export async function getServerSideProps(context) {
   const cookies = new Cookies(context.req.headers.cookie);
@@ -24,6 +25,8 @@ export default function Signup({ userIdCookie }) {
   const [otp, setOtp] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [username, setUsername] = useState("");
+  const [Password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -77,6 +80,13 @@ export default function Signup({ userIdCookie }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (Password !== confirmPassword) {
+      setMessage({
+        errorMsg: "Passwords do not match",
+        successMsg: "",
+      });
+      return;
+    }
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/user/signup/verify`,
       {
@@ -89,6 +99,7 @@ export default function Signup({ userIdCookie }) {
           otp: otp,
           email: email,
           username: username,
+          password: Password,
         }),
       }
     );
@@ -121,12 +132,9 @@ export default function Signup({ userIdCookie }) {
           className="cursor-pointer"
         />
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
+      <br /><br /><br /><br />
       {message.errorMsg && (
-        <div className="rounded p-2 my-2 bg-red-300 text-red-600 font-medium text-center">
+        <div className="rounded p-2 my-2 bg-red-200 text-red-600 font-medium text-center">
           {message.errorMsg}
         </div>
       )}
@@ -138,9 +146,7 @@ export default function Signup({ userIdCookie }) {
       <br />
       <div class="space-y-2 text-center flex flex-col items-center justify-center ">
         <div class="space-y-2">
-          <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl/none">
-            Welcome to Feta
-          </h1>
+          <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl/none">Welcome to Feta</h1>
           <p class="mx-auto max-w-[600px] text-gray-500 dark:text-gray-400">
             The platform for discovering and ticketing your favorite events.
           </p>
@@ -167,10 +173,11 @@ export default function Signup({ userIdCookie }) {
             </svg>
           </div>
           <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 mt-4">
-            <p>
-              Welcome to Feta
+            <p>Welcome to Feta
               {username && (
-                <div className="mt-2 text-gray-500">Dear, {username}!</div>
+                <div className="mt-2 text-gray-500">
+                  Dear, {username}!
+                </div>
               )}
             </p>
           </button>
@@ -186,6 +193,24 @@ export default function Signup({ userIdCookie }) {
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={Password}
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={confirmPassword}
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Confirm Password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <button
               type="submit"
@@ -228,7 +253,7 @@ export default function Signup({ userIdCookie }) {
               type="submit"
               className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-full bg-blue-400 hover:bg-blue-300 text-white"
               onClick={handleSubmit}
-              disabled={!email || !otp || !contactNumber || !username}
+              disabled={!email || !otp || !contactNumber || !username || !Password || !confirmPassword}
             >
               Create Account
             </button>
@@ -238,3 +263,4 @@ export default function Signup({ userIdCookie }) {
     </div>
   );
 }
+
