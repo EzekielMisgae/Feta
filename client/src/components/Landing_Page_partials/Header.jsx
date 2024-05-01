@@ -13,11 +13,12 @@ function Header() {
             onClick={() => router.push("/")}
           >
             <Image
-              src="" 
+              src="/favicon_io/favicon.ico"
               alt="Logo"
-              width={120}
-              height={60}
+              width={60}
+              height={30}
               className="cursor-pointer"
+              onClick={() => router.push("/")}
             />
           </div>
           <nav className="hidden md:flex space-x-10">
