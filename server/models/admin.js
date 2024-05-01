@@ -11,7 +11,7 @@ const adminSchema = new mongoose.Schema(
             type: String,
             unique: true,
         },
-        password: {
+        pass: {
             type: String,
         },
         name: {

@@ -107,7 +107,7 @@ const signUp = async (req, res) => {
                 console.log("Before hashing: ", otp);
 
                 // Send OTP via SMS
-                sendSMS(Email, Password, otp.otp);
+                sendSMS(Email, otp.otp);
 
                 // Encrypting the OTP and then saving to Otp_table
                 const salt = await bcrypt.genSalt(10);
@@ -132,6 +132,7 @@ const signUp = async (req, res) => {
         }
     });
 };
+
 
 // route - http://localhost:5000/user/signup/verify
 const verifyOtp = async (req, res) => {
