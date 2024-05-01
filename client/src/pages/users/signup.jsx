@@ -132,7 +132,7 @@ export default function Signup({ userIdCookie }) {
           className="cursor-pointer"
         />
       </div>
-      <br /><br /><br /><br />
+      <br /><br />
       {message.errorMsg && (
         <div className="rounded p-2 my-2 bg-red-200 text-red-600 font-medium text-center">
           {message.errorMsg}
@@ -194,6 +194,13 @@ export default function Signup({ userIdCookie }) {
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-full bg-green-400 hover:bg-green-300 text-white"
+              onClick={handleVerifyEmail}
+            >
+              Verify
+            </button>
             <input
               type="password"
               id="password"
@@ -202,6 +209,7 @@ export default function Signup({ userIdCookie }) {
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
+              disabled={!email || !otp}
             />
             <input
               type="password"
@@ -211,14 +219,9 @@ export default function Signup({ userIdCookie }) {
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
+              disabled={!email || !otp}
             />
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 rounded-full bg-green-400 hover:bg-green-300 text-white"
-              onClick={handleVerifyEmail}
-            >
-              Verify
-            </button>
+            
             <input
               type="text"
               id="username"
