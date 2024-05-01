@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { FaAngleDown } from "react-icons/fa";
+import { FaAngleDown, FaUserCircle } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { removeAdminToken } from "@/utils/removeAdminToken";
 
@@ -41,7 +41,8 @@ export default function Dropdown({ adminData }) {
                 onClick={toggleDropdown}
                 className="flex items-center justify-center bg-blue-500 text-white text-sm font-medium rounded-md w-28 h-10 focus:outline-none"
             >
-                <span className="mr-2">Admin</span>
+                <FaUserCircle className="h-6 w-6 mr-2" />
+                <span>Orginizer</span>
                 <FaAngleDown
                     className={`h-4 w-4 ${
                         showDropdown ? "transform rotate-180" : ""

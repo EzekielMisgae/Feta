@@ -126,7 +126,7 @@ export default function Signup({ userIdCookie }) {
       <br />
       <br />
       {message.errorMsg && (
-        <div className="rounded p-2 my-2 bg-red-300 text-red-600 font-medium text-center">
+        <div className="rounded p-2 my-2 bg-red-200 text-red-600 font-medium text-center">
           {message.errorMsg}
         </div>
       )}

@@ -1,90 +1,83 @@
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaLink } from "react-icons/fa";
 
-function TeamSection({images: developers}) {
-    return (
-        <div>
-            <div className="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
-                <br />
-                <br />
-                <br />
-                <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-                    <h2 className="h2 mb-4">
-                        Our{" "}
-                        <span className="text-blue-500">
-                            Team
-                        </span>{" "}
-                    </h2>
+function TeamSection({ images: developers }) {
+  return (
+    <div className="bg-gray-900 text-white relative min-h-screen">
+      <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-center text-3xl font-bold mb-10">
+          Meet Our <span className="text-blue-500">Team</span>
+        </h2>
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {developers?.slice(0, 3).map((developer) => (
+            <div
+              key={developer?.id}
+              className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105"
+            >
+              {/* Adjust image size here */}
+              <Image
+                className="w-full object-cover"
+                src={developer?.src}
+                alt={developer?.title}
+                width={400} // Smaller width
+                height={250} // Smaller height, adjust the ratio as needed
+                layout="responsive"
+              />
+              <div className="p-5">
+                <h3 className="text-lg font-semibold">{developer?.title}</h3>
+                <p className="text-sm text-gray-400">{developer?.role}</p>
+                {/* Additional Text Section */}
+                <p className="mt-3 text-xs text-gray-300">
+                  {developer?.description ||
+                    "No additional information provided."}
+                </p>
+                <div className="mt-5 flex space-x-3">
+                  {developer?.githubUrl && (
+                    <a
+                      href={developer?.githubUrl}
+                      className="text-gray-400 hover:text-blue-500 transition duration-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub className="h-6 w-6" />
+                    </a>
+                  )}
+                  {developer?.linkedinUrl && (
+                    <a
+                      href={developer?.linkedinUrl}
+                      className="text-gray-400 hover:text-blue-500 transition duration-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedin className="h-6 w-6" />
+                    </a>
+                  )}
+                  {developer?.websiteUrl && (
+                    <a
+                      href={developer?.websiteUrl}
+                      className="text-gray-400 hover:text-blue-500 transition duration-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLink className="h-6 w-6" />
+                    </a>
+                  )}
                 </div>
-                <div className="mt-10 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
-                    {developers?.slice(0, 3).map((developer) => (
-                        <div key={developer?.id} className="flex flex-col">
-                            <div className="flex-shrink-0">
-                                <Image
-                                    className="rounded-lg shadow-md w-full h-64 object-cover"
-                                    src={developer?.src}
-                                    alt={developer?.title}
-                                    width={500}
-                                    height={500}
-                                    cover
-                                />
-                            </div>
-                            <div className="flex-1 flex flex-col justify-between">
-                                <div className="mt-4">
-                                    <h3 className="text-lg font-medium text-gray-900">
-                                        {developer?.title}
-                                    </h3>
-                                    <p className="mt-2 text-base text-gray-500">
-                                        {developer?.role}
-                                    </p>
-                                </div>
-                                <div className="mt-6 flex-grow flex items-center">
-                                    <div className="flex space-x-3">
-                                        {developer?.githubUrl && (
-                                            <a
-                                                href={developer?.githubUrl}
-                                                className="text-gray-500 hover:text-blue-500 transition-all ease-in-out"
-                                                target="_blank"
-                                            >
-                                                <span className="sr-only">
-                                                    GitHub
-                                                </span>
-                                                <FaGithub className="h-6 w-6" />
-                                            </a>
-                                        )}
-                                        {developer?.linkedinUrl && (
-                                            <a
-                                                href={developer?.linkedinUrl}
-                                                className="text-gray-500 hover:text-blue-500 transition-all ease-in-out"
-                                                target="_blank"
-                                            >
-                                                <span className="sr-only">
-                                                    LinkedIn
-                                                </span>
-                                                <FaLinkedin className="h-6 w-6" />
-                                            </a>
-                                        )}
-                                        {developer?.websiteUrl && (
-                                            <a
-                                                href={developer?.websiteUrl}
-                                                className="text-gray-500 hover:text-blue-500 transition-all ease-in-out"
-                                                target="_blank"
-                                            >
-                                                <span className="sr-only">
-                                                    Personal Website
-                                                </span>
-                                                <FaLink className="h-6 w-6" />
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+              </div>
             </div>
+          ))}
         </div>
-    );
-};
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 bg-gray-800 py-3">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-white text-sm sm:text-base">
+            Discover the brilliant minds behind our innovations. Our team of
+            experts is dedicated to pushing the boundaries of technology.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default TeamSection;

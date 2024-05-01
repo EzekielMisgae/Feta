@@ -3,7 +3,6 @@ import React from "react";
 import { FaCheck } from "react-icons/fa";
 
 function EventTicketsShowcase() {
-  // Sample data for the tickets with images and key details
   const router = useRouter();
 
   const tickets = [
@@ -33,76 +32,31 @@ function EventTicketsShowcase() {
       ],
       extraInfo: "Tickets are limited, secure your spot now!",
     },
-    {
-      title: "Marathon 2024: City by the Bay",
-      description:
-        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
-      points: [
-        "Scenic Urban Course",
-        "Health & Fitness Expo",
-        "For All Skill Levels",
-      ],
-      extraInfo: "Early bird registration opens soon.",
-    },
-    {
-      title: "Marathon 2024: City by the Bay",
-      description:
-        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
-      points: [
-        "Scenic Urban Course",
-        "Health & Fitness Expo",
-        "For All Skill Levels",
-      ],
-      extraInfo: "Early bird registration opens soon.",
-    },
-    {
-      title: "Marathon 2024: City by the Bay",
-      description:
-        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
-      points: [
-        "Scenic Urban Course",
-        "Health & Fitness Expo",
-        "For All Skill Levels",
-      ],
-      extraInfo: "Early bird registration opens soon.",
-    },
-    {
-      title: "Marathon 2024: City by the Bay",
-      description:
-        "Lace up for the annual marathon and experience the city's landmarks in a new way.",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAK_BOolVnQhD6LAGXdkgkWoZtbVsDBK8nNT5r0d48yg&s",
-      points: [
-        "Scenic Urban Course",
-        "Health & Fitness Expo",
-        "For All Skill Levels",
-      ],
-      extraInfo: "Early bird registration opens soon.",
-    },
+    // Add more tickets as needed
   ];
 
+  const columnSpanPattern = [6, 6, 4, 4, 4, 6, 6, 4]; // Defines "2323" pattern
+  const getColumnSpan = (index) =>
+    `md:col-span-${columnSpanPattern[index % columnSpanPattern.length]}`;
+
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       <div className="text-center pb-12 md:pb-16">
         <h1 className="text-4xl font-bold mb-4">
-          Explore Exciting Events & Experiences
+          catagories that you can experiance in our website
         </h1>
         <p className="text-xl text-gray-500">
           Discover unique events and secure your tickets with ease. Enhance your
           lifestyle and create memorable moments.
         </p>
       </div>
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-12 gap-6 p-6 bg-gray-50 border-4 border-gray-300 rounded-lg shadow-lg">
         {tickets.map((ticket, index) => (
           <div
             key={index}
-            className="bg-white shadow-xl rounded-xl overflow-hidden hover:shadow-2xl transform hover:scale-105 transition-all duration-500"
+            className={`bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out ${getColumnSpan(
+              index
+            )}`}
           >
             <img
               src={ticket.imageUrl}
