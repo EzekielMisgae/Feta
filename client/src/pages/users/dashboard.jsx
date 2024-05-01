@@ -148,6 +148,7 @@ function UserDashboard() {
                               src={event.profile}
                               alt=""
                               sizes="(min-width: 640px) 100vw, 50vw"
+                              cover="true"
                               priority
                             />
                           )}

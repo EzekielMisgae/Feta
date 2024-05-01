@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             trim: true,
         },
+        password: {
+            type: String,
+            required: true,
+        },
         email: {
             type: String,
             trim: true,
@@ -21,6 +25,9 @@ const userSchema = new mongoose.Schema(
         contactNumber: {
             type: String,
             required: true,
+        },
+        profilePicture: {
+            type: String,
         },
         registeredEvents: [eventSchema],
     },

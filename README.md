@@ -32,11 +32,11 @@ Our event management system is built on a microservice architecture. This allows
 <p>You can download the zip file of the repository</p>
 
 <h3>Navigate to the project's root directory</h3>
-<p>Once you have downloaded the repository, navigate to the project's root directory. The project consists of three folders: client, server, and developer.</p>
+<p>Once you have downloaded the repository, navigate to the project's root directory. The project consists of three folders: client, server, developer and chapaController.</p>
 <h3>Install dependencies</h3>
 <p>Before starting the servers, make sure to install the dependencies by running the command:</p>
 <pre><code class="language-bash">npm install</code></pre>
-<b>in all three folders: client, server, and developer.</b>
+<b>in all three folders: client, server, developer and chapaController.</b>
 <h3>Set up environment variables</h3>
 <p>Before running the servers, you need to set up the following environment variables:</p>
 <h4>For the client-side:</h4>
@@ -49,7 +49,7 @@ Our event management system is built on a microservice architecture. This allows
 <pre><code class="language-arduino">npm run dev</code></pre>
 <p>For the server-side:</p>
 <pre><code>nodemon index.js </code> or <code> node --no-deprecation index.js</code></pre>
-<p>For the Chapa payment:</p>
+<p>For the chapaController:</p>
 <pre><code>npm install</code> to install all required dependencies</pre>
 <p>To run the payment:</p>
 <code>npm run dev</code> to start the local server

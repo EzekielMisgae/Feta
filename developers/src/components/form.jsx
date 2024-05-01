@@ -9,17 +9,17 @@ function Form() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await fetch(
-            `https://invite-y2r5.onrender.com/setadmin`,
+            `http://localhost:5000/setadmin`,
             {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    password: password,
-                }),
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+            }),
             }
         );
         if (response.status === 200) {

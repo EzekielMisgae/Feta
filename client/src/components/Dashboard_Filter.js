@@ -89,7 +89,7 @@ function Dashboard_Filter({
                         htmlFor="dateRange"
                         className="font-medium block mb-1"
                     >
-                        Date Range
+                    Starting from Date
                     </label>
                     <input
                         type="date"
@@ -107,7 +107,7 @@ function Dashboard_Filter({
                         min={0}
                         max={10000}
                         step={10}
-                        defaultValue={[10, 100]}
+                        defaultValue={[10, 10000]}
                         value={filterOptions.price}
                         onChange={handlePriceChange}
                     />
@@ -116,12 +116,6 @@ function Dashboard_Filter({
                     </p>
                 </div>
             </form>
-            <button
-                onClick={handleFilterClear}
-                className="w-full mt-2 text-white py-2 px-4 rounded-lg bg-gray-700 hover:bg-gray-800"
-            >
-                Clear Filters
-            </button>
         </div>
     );
 }

@@ -56,13 +56,6 @@ export default function NavBar() {
                         onClick={() => router.push("/admin/dashboard")}
                         className="flex items-center gap-x-3 cursor-pointer"
                     >
-                        <Image
-                            src="https://i.pinimg.com/736x/a7/47/7f/a7477f5b51e89856d0694d4c02dcd506.jpg"
-                            width={500}
-                            height={500}
-                            alt="Logo"
-                            className="h-8 w-8"
-                        />
                         <h1 className="m-2 text-black font-bold text-4xl"> 
                             <span className="text-blue-500"> Feta </span> 
                         </h1>

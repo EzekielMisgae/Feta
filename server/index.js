@@ -10,14 +10,20 @@ const bodyParser = require("body-parser");
 
 const userRouter = require("./routes/authRoutes");
 const dashboardRouter = require("./routes/userDashboardRoutes");
-const paymentRouter = require("./routes/paymentRoute");
 const adminRouter = require("./routes/adminRoutes");
 const eventRouter = require("./routes/eventRoutes");
 // const checkInRouter = require("./routes/checkInRoutes")
 
+const CHAPA_URL = process.env.CHAPA_URL || "https://api.chapa.co/v1/transaction/initialize"
+const CHAPA_AUTH = process.env.CHAPA_AUTH
+
+const config = {
+    headers: {
+        Authorization: `Bearer ${CHAPA_AUTH}`
+    }
+}
+
 dotenv.config();
-// console.log("in index - ", process.env.MONGO_ATLAS_URI);
-//database url
 mongoose
     .connect(process.env.MONGO_ATLAS_URI, {
         useNewUrlParser: true,
@@ -41,7 +47,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
-app.use("/", paymentRouter);
 app.use("/user", userRouter);
 app.use("/user", dashboardRouter);
 

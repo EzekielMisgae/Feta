@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Image from "next/image"; // Make sure to import Image from 'next/image' for optimized image loading
+import Image from "next/image";
 
 function Header() {
   const router = useRouter();
@@ -8,13 +8,12 @@ function Header() {
     <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3">
-          {/* Logo as an image */}
           <div
             className="flex justify-start lg:w-0 lg:flex-1"
             onClick={() => router.push("/")}
           >
             <Image
-              src="/path-to-your-logo.png" // Replace with the path to your actual logo image
+              src="" 
               alt="Logo"
               width={120}
               height={60}
@@ -28,7 +27,6 @@ function Header() {
             >
               Sign In
             </button>
-            {/* Emphasize the Sign Up button as a call to action */}
 
             <button
               className="text-gray-700 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md transition duration-300"
@@ -37,7 +35,6 @@ function Header() {
               Event Manager
             </button>
           </nav>
-          {/* Mobile Menu Icon */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => console.log("open menu")}
