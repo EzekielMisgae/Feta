@@ -37,6 +37,7 @@ function UserDashboard() {
   };
 
   useEffect(() => {
+    // functional yteral
     fetchAllEvents();
   }, []);
 
